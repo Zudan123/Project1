@@ -1,9 +1,14 @@
 package com.example.project1;
 
 import android.util.Log;
+
+import java.util.List;
+
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class RealmHelper {
+
     Realm realm;
 
     public  RealmHelper(Realm realm){
@@ -33,4 +38,20 @@ public class RealmHelper {
         });
     }
 
+    // untuk memanggil semua data
+    public List<ModelMovieRealm> getAllMovie() {
+        RealmResults<ModelMovieRealm> results = realm.where(ModelMovieRealm.class).findAll();
+        return results;
+    }
+
+    public void delete(Integer id) {
+        final RealmResults<ModelMovieRealm> model = realm.where(ModelMovieRealm.class).equalTo("id", id).findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                model.deleteFromRealm(0);
+            }
+        });
+
+    }
 }
