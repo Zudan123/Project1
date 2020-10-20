@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataAdapterFavourite extends RecyclerView.Adapter<DataAdapterFavourite.DatakuViewHolder> {
-    private List<ModelMovieRealm> dataList;
+    private List<DetailMovieRealm> dataList;
     private Callback callback;
     View viewku;
     int posku;
@@ -32,7 +32,7 @@ public class DataAdapterFavourite extends RecyclerView.Adapter<DataAdapterFavour
     }
 
 
-    public DataAdapterFavourite(List<ModelMovieRealm> dataList, Callback callback) {
+    public DataAdapterFavourite(List<DetailMovieRealm> dataList, Callback callback) {
         this.callback = callback;
         this.dataList = dataList;
         Log.d("makanan", "MahasiswaAdapter: "+dataList.size()+"");

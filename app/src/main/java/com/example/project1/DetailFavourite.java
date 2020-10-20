@@ -16,7 +16,7 @@ import io.realm.RealmConfiguration;
 public class DetailFavourite extends AppCompatActivity {
     Realm realm;
     RealmHelper realmHelper;
-    ModelMovieRealm movieModel;
+    DetailMovieRealm movieModel;
 
 
     Bundle extras;

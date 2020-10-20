@@ -19,7 +19,7 @@ public class ListDataFavourite extends AppCompatActivity {
     RealmHelper realmHelper;
     private RecyclerView recyclerView;
     private DataAdapterFavourite adapter;
-    private List<ModelMovieRealm> DataArrayList; //kit add kan ke adapter
+    private List<DetailMovieRealm> DataArrayList; //kit add kan ke adapter
 
 
     @Override

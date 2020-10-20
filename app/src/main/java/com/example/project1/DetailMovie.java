@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 
 import io.realm.Realm;
@@ -17,7 +18,8 @@ import io.realm.RealmConfiguration;
 public class DetailMovie extends AppCompatActivity {
     Realm realm;
     RealmHelper realmHelper;
-    ModelMovieRealm movieModel;
+    DetailMovieRealm movieModel;
+
 
     Bundle extras;
     String title;
@@ -34,7 +36,7 @@ public class DetailMovie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_movie);
+        setContentView(R.layout.activty_detailmovie);
         extras = getIntent().getExtras();
         tvjudul = (TextView)findViewById(R.id.tvjudul);
         tvdesc = (TextView)findViewById(R.id.txtdeskripsi);
@@ -56,6 +58,7 @@ public class DetailMovie extends AppCompatActivity {
                     .into(ivposter);
             // and get whatever type user account id is
         }
+
         //Set up Realm
         Realm.init(DetailMovie.this);
         RealmConfiguration configuration = new RealmConfiguration.Builder().build();
@@ -65,7 +68,7 @@ public class DetailMovie extends AppCompatActivity {
         btnbookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                movieModel = new ModelMovieRealm();
+                movieModel = new DetailMovieRealm();
                 movieModel.setDesc(deskripsi);
                 movieModel.setJudul(title);
                 movieModel.setPath(path);
@@ -78,4 +81,3 @@ public class DetailMovie extends AppCompatActivity {
         });
     }
 }
-

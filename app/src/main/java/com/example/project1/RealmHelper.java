@@ -16,13 +16,13 @@ public class RealmHelper {
     }
 
     // untuk menyimpan data
-    public void save(final ModelMovieRealm movieModel){
+    public void save(final DetailMovieRealm movieModel){
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 if (realm != null){
                     Log.e("Created", "Database was created");
-                    Number currentIdNum = realm.where(ModelMovieRealm.class).max("id");
+                    Number currentIdNum = realm.where(DetailMovieRealm.class).max("id");
                     int nextId;
                     if (currentIdNum == null){
                         nextId = 1;
@@ -30,7 +30,7 @@ public class RealmHelper {
                         nextId = currentIdNum.intValue() + 1;
                     }
                     movieModel.setId(nextId);
-                    ModelMovieRealm model = realm.copyToRealm(movieModel);
+                    DetailMovieRealm model = realm.copyToRealm(movieModel);
                 }else{
                     Log.e("ppppp", "execute: Database not Exist");
                 }
@@ -39,13 +39,13 @@ public class RealmHelper {
     }
 
     // untuk memanggil semua data
-    public List<ModelMovieRealm> getAllMovie() {
-        RealmResults<ModelMovieRealm> results = realm.where(ModelMovieRealm.class).findAll();
+    public List<DetailMovieRealm> getAllMovie() {
+        RealmResults<DetailMovieRealm> results = realm.where(DetailMovieRealm.class).findAll();
         return results;
     }
 
     public void delete(Integer id) {
-        final RealmResults<ModelMovieRealm> model = realm.where(ModelMovieRealm.class).equalTo("id", id).findAll();
+        final RealmResults<DetailMovieRealm> model = realm.where(DetailMovieRealm.class).equalTo("id", id).findAll();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
